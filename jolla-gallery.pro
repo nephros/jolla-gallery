@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 TEMPLATE = subdirs
-SUBDIRS = src translations tests
+SUBDIRS = src translations tests src/extensions
 
 OTHER_FILES += \
     com.jolla.gallery.service \
