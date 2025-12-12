@@ -16,7 +16,7 @@ CONFIG += plugin link_pkgconfig
 include($$PWD/../../../common.pri)
 
 TS_FILE = $$OUT_PWD/gallery-extension-favorites.ts
-EE_QM = $$OUT_PWD/gallery-extension-favorites.qm
+EE_QM = $$OUT_PWD/gallery-extension-favorites_eng_en.qm
 
 ts.commands += lupdate $$PWD -ts $$TS_FILE
 ts.CONFIG += no_check_exist no_link

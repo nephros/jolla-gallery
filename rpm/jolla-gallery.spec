@@ -101,7 +101,7 @@ install -m 644 -p %{SOURCE1} %{buildroot}%{_datadir}/mapplauncherd/privileges.d/
 %exclude %{_libdir}/qt5/qml/com/jolla/gallery/favorites
 
 %files extensions-favorites
-%{_datadir}/translations/gallery-extension-favorites.qm
+%{_datadir}/translations/gallery-extension-favorites_eng_en.qm
 %{_datadir}/%{name}/mediasources/FavoritePhotoSource.qml
 %{_libdir}/qt5/qml/com/jolla/gallery/favorites
 

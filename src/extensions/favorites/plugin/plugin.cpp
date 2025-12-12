@@ -42,7 +42,7 @@ public:
         Q_UNUSED(uri)
         Q_ASSERT(QLatin1String(uri) == QLatin1String("com.jolla.gallery.favorites"));
         AppTranslator *engineeringEnglish = new AppTranslator(engine);
-        engineeringEnglish->load("gallery-extension-favorites-en", "/usr/share/translations");
+        engineeringEnglish->load("gallery-extension-favorites_eng_en", "/usr/share/translations");
         AppTranslator *translator = new AppTranslator(engine);
         translator->load(QLocale(), "gallery-extension-favorites", "-", "/usr/share/translations");
     }
