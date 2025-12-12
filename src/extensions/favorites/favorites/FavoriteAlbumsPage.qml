@@ -1,0 +1,61 @@
+// SPDX-FileCopyrightText: 2013-2018 Jolla Ltd.
+// SPDX-FileCopyrightText: 2025 Jolla Mobile Ltd
+// SPDX-FILECopyrightText: 2025 Peter G. <sailfish@nephros.org>
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import Sailfish.Gallery 1.0
+import com.jolla.gallery 1.0
+import QtDocGallery 5.0
+
+MediaSourcePage {
+    id: root
+
+    SilicaGridView { id: view
+
+        anchors.fill: parent
+        cacheBuffer: Screen.height
+        model: root.model
+        cellHeight: Theme.itemSizeExtraLarge // fixed from delegate
+        cellWidth: Math.min(parent.width/2, parent.height/2)
+
+        header: PageHeader {
+            //% "Favorite Albums"
+            title: qsTrId("gallery-extension-favorites_header")
+        }
+
+        delegate: FavoriteAlbumDelegate {
+            width: GridView.view.cellWidth
+            height: GridView.view.cellHeight
+
+            albumName: displayName.length > 0
+                ? displayName
+                : "Images"
+            serviceIcon: "image://theme/icon-m-file-folder-favorites"
+            onClicked: {
+                var props = {
+                    "title": displayName,
+                    "model": imagesModel,
+                    "userData": MediaSource.Photos
+                }
+                pageStack.animatorPush(Qt.resolvedUrl("/usr/share/jolla-gallery/pages/GalleryGridPage.qml"), props)
+            }
+            // we already tested for /run/media in mediasource so this should be ok
+            property string albumPath: (path.indexOf("/") == 0) ? path : StandardPaths.home + "/" + path
+            imagesModel: DocumentGalleryModel {
+                property string albumName: model.displayName
+                rootType: DocumentGallery.Image
+                properties: ["url", "mimeType", "title", "orientation", "dateTaken", "width", "height" ]
+                sortProperties: ["-dateTaken"]
+                autoUpdate: true
+                filter: GalleryStartsWithFilter { property: "filePath"; value: albumPath }
+            }
+        }
+
+        VerticalScrollDecorator {}
+    }
+}
+
+// vim: ft=javascript ts=4 st=4 sw=4 expandtab

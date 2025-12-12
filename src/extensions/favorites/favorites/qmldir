@@ -1,0 +1,6 @@
+module com.jolla.gallery.favorites
+plugin jollagalleryfavoritesplugin
+FavoriteAlbumDelegate 1.0 FavoriteAlbumDelegate.qml
+FavoriteAlbumsPage 1.0 FavoriteAlbumsPage.qml
+FavoriteGalleryIcon 1.0 FavoriteGalleryIcon.qml
+FavoriteSlideshowIcon 1.0 FavoriteSlideshowIcon.qml
