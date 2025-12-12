@@ -22,12 +22,11 @@ MediaSource {
     ready: sourceModel.count > 0
     page: StandardPaths.resolveImport("com.jolla.gallery.favorites.FavoriteAlbumsPage")
 
-    /*! \internal */
     property bool applicationActive: Qt.application.active
 
     // FIXME: add Videos
     type: MediaSource.Photos
-    /*! ListModel propulated from parising the photoSources key */
+    /* ListModel propulated from parsing the photoSources key */
     property ListModel sourceModel: ListModel{}
 
     /* DConf location holding the user-specified media source path.
