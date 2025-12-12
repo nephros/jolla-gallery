@@ -43,6 +43,13 @@ Requires:  nemo-qml-plugin-filemanager
 %description
 The Jolla Gallery application.
 
+%package extensions-favorites
+Summary:   Favorite Album extension for Jolla Gallery
+Requires: %{name}
+
+%description extensions-favorites
+%{summary}.
+
 %package ts-devel
 Summary:   Translation source for Jolla Gallery
 
@@ -90,9 +97,17 @@ install -m 644 -p %{SOURCE1} %{buildroot}%{_datadir}/mapplauncherd/privileges.d/
 %{_datadir}/mapplauncherd/privileges.d/*
 %{_libdir}/qt5/qml/com/jolla/gallery
 %{_oneshotdir}/enable-gallery-hints
+%exclude %{_datadir}/%{name}/mediasources/FavoritePhotoSource.qml
+%exclude %{_libdir}/qt5/qml/com/jolla/gallery/favorites
+
+%files extensions-favorites
+%{_datadir}/translations/gallery-extension-favorites.qm
+%{_datadir}/%{name}/mediasources/FavoritePhotoSource.qml
+%{_libdir}/qt5/qml/com/jolla/gallery/favorites
 
 %files ts-devel
 %{_datadir}/translations/source/gallery.ts
+%{_datadir}/translations/source/gallery-extension-favorites.ts
 
 %files tests
 /opt/tests/%{name}
